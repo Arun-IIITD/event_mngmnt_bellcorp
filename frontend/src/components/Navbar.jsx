@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-600 p-4 text-white shadow-md flex justify-between items-center">
       <Link to="/events" className="font-bold text-2xl hover:text-gray-200">
-        EventPlatform
+        Event's Homepage
       </Link>
 
       <div className="flex items-center gap-4">

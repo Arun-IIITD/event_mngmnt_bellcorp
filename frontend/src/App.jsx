@@ -13,13 +13,30 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <Navbar />
+        <Navbar /> {/* Navbar will always be visible if you want, or wrap in ProtectedRoute */}
         <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/events/:id" element={<EventDetails />} />
 
+          {/* Protected Routes */}
+          <Route
+            path="/events"
+            element={
+              <ProtectedRoute>
+                <Events />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/events/:id"
+            element={
+              <ProtectedRoute>
+                <EventDetails />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/dashboard"
             element={
@@ -28,17 +45,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-
-
-
-          <Route path="/create-event" element={
-            <ProtectedRoute>
-              <CreateEvent />
-            </ProtectedRoute>
-          }/>
-
-
-
+          <Route
+            path="/create-event"
+            element={
+              <ProtectedRoute>
+                <CreateEvent />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>
